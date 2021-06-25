@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package hierror;
+import "google/protobuf/descriptor.proto";
+
+option go_package = "api/cloud/v1;v1";
+extend google.protobuf.EnumOptions {
+  int32 default_code = 11108;
+}
+
+extend google.protobuf.EnumValueOptions {
+  int32 code = 11109;
+}
+enum ErrorReason {
+  option (hierror.default_code) = 500;
+
+  USER_NOT_FOUND = 0 [(hierror.code) = 404];
+  CONTENT_MISSING = 1 [(hierror.code) = 400];;
+}
